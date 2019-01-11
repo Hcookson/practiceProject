@@ -1,3 +1,3 @@
 # practiceProject
 
-This is a project that I made to help review/practice es6. 
+This is a project apart of a course to help practice/review es6 focusing on DOM manipulation. 
