@@ -41,7 +41,38 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         document.querySelector('#current-' + activePlayer).textContent = roundScore;
     } else {
         // Next player
-       activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
-       roundScore = 0;
+        nextPlayer();
+
     }
 });
+
+document.querySelector('.btn-hold').addEventListener('click', function() {
+// add current score to player's global score
+    scores[activePlayer] += roundScore;
+// scores[activePlayer] = scores[activePlayer] + roundScore;
+
+// update UI 
+    document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
+
+// Check if player won the game
+    if (scores[activePlayer] >= 20) {
+        document.querySelector('#name-' +activePlayer).textContent = 'Winner!';
+    } else {
+        nextPlayer();
+    }
+// next player 
+    nextPlayer();
+
+});
+
+function nextPlayer() {
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+
+    document.getElementById('current-0').textContent = '0';
+    document.getElementById('current-1').textContent = '0';
+     // toggling the class "active" which shows which player is currently selected
+    document.querySelector('.player-0-panel').classList.toggle('active');
+    document.querySelector('.player-1-panel').classList.toggle('active');
+
+}
